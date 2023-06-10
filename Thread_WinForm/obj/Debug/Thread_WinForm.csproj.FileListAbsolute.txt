@@ -1,0 +1,11 @@
+D:\ДЗ_Шаг\Windows Forms C#\GitHub\ThreadWinForm\Thread_WinForm\bin\Debug\Thread_WinForm.exe.config
+D:\ДЗ_Шаг\Windows Forms C#\GitHub\ThreadWinForm\Thread_WinForm\bin\Debug\Thread_WinForm.exe
+D:\ДЗ_Шаг\Windows Forms C#\GitHub\ThreadWinForm\Thread_WinForm\bin\Debug\Thread_WinForm.pdb
+D:\ДЗ_Шаг\Windows Forms C#\GitHub\ThreadWinForm\Thread_WinForm\obj\Debug\Thread_WinForm.csproj.AssemblyReference.cache
+D:\ДЗ_Шаг\Windows Forms C#\GitHub\ThreadWinForm\Thread_WinForm\obj\Debug\Thread_WinForm.csproj.SuggestedBindingRedirects.cache
+D:\ДЗ_Шаг\Windows Forms C#\GitHub\ThreadWinForm\Thread_WinForm\obj\Debug\Thread_WinForm.Form1.resources
+D:\ДЗ_Шаг\Windows Forms C#\GitHub\ThreadWinForm\Thread_WinForm\obj\Debug\Thread_WinForm.Properties.Resources.resources
+D:\ДЗ_Шаг\Windows Forms C#\GitHub\ThreadWinForm\Thread_WinForm\obj\Debug\Thread_WinForm.csproj.GenerateResource.cache
+D:\ДЗ_Шаг\Windows Forms C#\GitHub\ThreadWinForm\Thread_WinForm\obj\Debug\Thread_WinForm.csproj.CoreCompileInputs.cache
+D:\ДЗ_Шаг\Windows Forms C#\GitHub\ThreadWinForm\Thread_WinForm\obj\Debug\Thread_WinForm.exe
+D:\ДЗ_Шаг\Windows Forms C#\GitHub\ThreadWinForm\Thread_WinForm\obj\Debug\Thread_WinForm.pdb
