@@ -17,10 +17,10 @@ namespace Thread_WinForm
         private int numThreads;
       
         private int[] dataArray;
-
-        static int processedCount = 0;  
-        static Stopwatch stopwatch = new Stopwatch();
         private int[] processedArray;
+        static Stopwatch stopwatch = new Stopwatch();
+        private Thread processingThread;
+        private Thread[] threads;
 
         public Form1()
         {
@@ -33,61 +33,95 @@ namespace Thread_WinForm
 
         private void button_Start_Click(object sender, EventArgs e)
         {
+            richTextBox_Result.Clear();
+
             int arraySize = int.Parse(textBox_A.Text);
             dataArray = GenerateArray(arraySize);
-
             processedArray = new int[arraySize];
-
-            Thread[] threads = new Thread[numThreads];
-
             stopwatch.Start();
+
+            //processingThread = new Thread(ProcessArray);
+            //processingThread.Start();
+
+            threads = new Thread[numThreads];
 
             for (int i = 0; i < numThreads; i++)
             {
-                threads[i] = new Thread(ProcessArray);
+                int threadIndex = i; // Захватываем локальную копию переменной цикла
+                threads[i] = new Thread(() => ProcessArray(threadIndex));
                 threads[i].Start();
             }
 
-            foreach (var thread in threads)
+            foreach (Thread thread in threads)
             {
                 thread.Join();
             }
 
             stopwatch.Stop();
 
-            PrintResult("Результаты обработки массива данных:");
+            PrintResult("Результати обробки масиву даних:");
 
+            //for (int i = 0; i < dataArray.Length; i++)
+            //{
+            //    PrintResult(dataArray[i].ToString());
+            //}
             for (int i = 0; i < processedArray.Length; i++)
             {
                 PrintResult(processedArray[i].ToString());
             }
 
-            // Выводим статистику
-            PrintResult("Время выполнения: " + stopwatch.Elapsed);
-            PrintResult("Количество потоков: " + numThreads);
+          
+            //processingThread.Join();
+            PrintResult("Час виконання: " + stopwatch.Elapsed);
+            PrintResult("Кількість потоків: " + numThreads);
+         
+            
         }
 
-
-        private void ProcessArray()
+        private void ProcessArray(int threadIndex)
         {
+            int start = threadIndex * (dataArray.Length / numThreads);
+            int end = (threadIndex == numThreads - 1) ? dataArray.Length : (threadIndex + 1) * (dataArray.Length / numThreads);
+
             if (checkBox_Summ.Checked)
             {
-                int[] sum = CalculateSum();
-                PrintResult("Сумма: " + string.Join(", ", sum));
+                int sum = CalculateSum(start, end);
+                processedArray[threadIndex] = sum;
             }
 
             if (checkBox_MaxElement.Checked)
             {
-                int[] max = FindMax();
-                PrintResult("Максимальный элемент: " + string.Join(", ", max));
+                int max = FindMax(start, end);
+                processedArray[threadIndex] = max;
             }
 
             if (checkBox_MinElement.Checked)
             {
-                int[] min = FindMin();
-                PrintResult("Минимальный элемент: " + string.Join(", ", min));
+                int min = FindMin(start, end);
+                processedArray[threadIndex] = min;
             }
         }
+
+        //private void ProcessArray()
+        //{
+        //    if (checkBox_Summ.Checked)
+        //    {
+        //        int[] sum = CalculateSum();
+        //        PrintResult("Сумма: " + string.Join(", ", sum));
+        //    }
+
+        //    if (checkBox_MaxElement.Checked)
+        //    {
+        //        int[] max = FindMax();
+        //        PrintResult("Максимальный элемент: " + string.Join(", ", max));
+        //    }
+
+        //    if (checkBox_MinElement.Checked)
+        //    {
+        //        int[] min = FindMin();
+        //        PrintResult("Минимальный элемент: " + string.Join(", ", min));
+        //    }
+        //}
 
         private int[] GenerateArray(int size)
         {
@@ -96,60 +130,101 @@ namespace Thread_WinForm
 
             for (int i = 0; i < size; i++)
             {
-                array[i] = random.Next(1000); // Заполняем случайными числами от 0 до 99
+                array[i] = random.Next(1000);
             }
 
             return array;
         }
 
-        private int[] CalculateSum()
+        //private int[] CalculateSum()
+        //{
+        //    int sum = 0;
+
+        //    foreach (int num in dataArray)
+        //    {
+        //        sum += num;
+        //    }
+
+        //    return new int[] { sum };
+        //}
+
+        //private int[] FindMax()
+        //{
+        //    int max = int.MinValue;
+
+        //    foreach (int num in dataArray)
+        //    {
+        //        if (num > max)
+        //        {
+        //            max = num;
+        //        }
+        //    }
+
+        //    return new int[] { max };
+        //}
+
+        //private int[] FindMin()
+        //{
+        //    int min = int.MaxValue;
+
+        //    foreach (int num in dataArray)
+        //    {
+        //        if (num < min)
+        //        {
+        //            min = num;
+        //        }
+        //    }
+
+        //    return new int[] { min };
+        //}
+
+        private int CalculateSum(int start, int end)
         {
             int sum = 0;
 
-            foreach (int num in dataArray)
+            for (int i = start; i < end; i++)
             {
-                sum += num;
+                sum += dataArray[i];
             }
 
-            return new int[] { sum };
+            return sum;
         }
 
-        private int[] FindMax()
+        private int FindMax(int start, int end)
         {
             int max = int.MinValue;
 
-            foreach (int num in dataArray)
+            for (int i = start; i < end; i++)
             {
-                if (num > max)
+                if (dataArray[i] > max)
                 {
-                    max = num;
+                    max = dataArray[i];
                 }
             }
 
-            return new int[] { max };
+            return max;
         }
 
-        private int[] FindMin()
+        private int FindMin(int start, int end)
         {
             int min = int.MaxValue;
 
-            foreach (int num in dataArray)
+            for (int i = start; i < end; i++)
             {
-                if (num < min)
+                if (dataArray[i] < min)
                 {
-                    min = num;
+                    min = dataArray[i];
                 }
             }
 
-            return new int[] { min };
+            return min;
         }
-
         private void PrintResult(string result)
         {
-            // Используем Invoke, чтобы выполнить обновление UI из основного потока
             BeginInvoke(new Action(() =>
             {
                 richTextBox_Result.AppendText(result + Environment.NewLine);
+                richTextBox_Result.ScrollToCaret();
             }));
         }
 
