@@ -42,12 +42,13 @@
             this.button_Start = new System.Windows.Forms.Button();
             this.richTextBox_Result = new System.Windows.Forms.RichTextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.checkBox_SortArray = new System.Windows.Forms.CheckBox();
-            this.checkBox_Summ = new System.Windows.Forms.CheckBox();
-            this.checkBox_MaxElement = new System.Windows.Forms.CheckBox();
             this.checkBox_MinElement = new System.Windows.Forms.CheckBox();
+            this.checkBox_MaxElement = new System.Windows.Forms.CheckBox();
+            this.checkBox_Summ = new System.Windows.Forms.CheckBox();
+            this.checkBox_One = new System.Windows.Forms.CheckBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label_ProcessorCount = new System.Windows.Forms.Label();
+            this.checkBox_Sort = new System.Windows.Forms.CheckBox();
             this.groupBox_OneArray.SuspendLayout();
             this.groupBox_TwoArray.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -189,10 +190,11 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.checkBox_Sort);
             this.groupBox1.Controls.Add(this.checkBox_MinElement);
             this.groupBox1.Controls.Add(this.checkBox_MaxElement);
             this.groupBox1.Controls.Add(this.checkBox_Summ);
-            this.groupBox1.Controls.Add(this.checkBox_SortArray);
+            this.groupBox1.Controls.Add(this.checkBox_One);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox1.Location = new System.Drawing.Point(12, 251);
             this.groupBox1.Name = "groupBox1";
@@ -201,45 +203,45 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Алгоритми";
             // 
-            // checkBox_SortArray
+            // checkBox_MinElement
             // 
-            this.checkBox_SortArray.AutoSize = true;
-            this.checkBox_SortArray.Location = new System.Drawing.Point(11, 34);
-            this.checkBox_SortArray.Name = "checkBox_SortArray";
-            this.checkBox_SortArray.Size = new System.Drawing.Size(148, 20);
-            this.checkBox_SortArray.TabIndex = 0;
-            this.checkBox_SortArray.Text = "Сортуваня масиву";
-            this.checkBox_SortArray.UseVisualStyleBackColor = true;
-            // 
-            // checkBox_Summ
-            // 
-            this.checkBox_Summ.AutoSize = true;
-            this.checkBox_Summ.Location = new System.Drawing.Point(11, 60);
-            this.checkBox_Summ.Name = "checkBox_Summ";
-            this.checkBox_Summ.Size = new System.Drawing.Size(60, 20);
-            this.checkBox_Summ.TabIndex = 1;
-            this.checkBox_Summ.Text = "Сума";
-            this.checkBox_Summ.UseVisualStyleBackColor = true;
+            this.checkBox_MinElement.AutoSize = true;
+            this.checkBox_MinElement.Location = new System.Drawing.Point(11, 105);
+            this.checkBox_MinElement.Name = "checkBox_MinElement";
+            this.checkBox_MinElement.Size = new System.Drawing.Size(216, 20);
+            this.checkBox_MinElement.TabIndex = 3;
+            this.checkBox_MinElement.Text = "Пошук min елемента у масиві";
+            this.checkBox_MinElement.UseVisualStyleBackColor = true;
             // 
             // checkBox_MaxElement
             // 
             this.checkBox_MaxElement.AutoSize = true;
-            this.checkBox_MaxElement.Location = new System.Drawing.Point(11, 86);
+            this.checkBox_MaxElement.Location = new System.Drawing.Point(11, 80);
             this.checkBox_MaxElement.Name = "checkBox_MaxElement";
             this.checkBox_MaxElement.Size = new System.Drawing.Size(220, 20);
             this.checkBox_MaxElement.TabIndex = 2;
             this.checkBox_MaxElement.Text = "Пошук max елемента у масиві";
             this.checkBox_MaxElement.UseVisualStyleBackColor = true;
             // 
-            // checkBox_MinElement
+            // checkBox_Summ
             // 
-            this.checkBox_MinElement.AutoSize = true;
-            this.checkBox_MinElement.Location = new System.Drawing.Point(11, 112);
-            this.checkBox_MinElement.Name = "checkBox_MinElement";
-            this.checkBox_MinElement.Size = new System.Drawing.Size(216, 20);
-            this.checkBox_MinElement.TabIndex = 3;
-            this.checkBox_MinElement.Text = "Пошук min елемента у масиві";
-            this.checkBox_MinElement.UseVisualStyleBackColor = true;
+            this.checkBox_Summ.AutoSize = true;
+            this.checkBox_Summ.Location = new System.Drawing.Point(11, 54);
+            this.checkBox_Summ.Name = "checkBox_Summ";
+            this.checkBox_Summ.Size = new System.Drawing.Size(60, 20);
+            this.checkBox_Summ.TabIndex = 1;
+            this.checkBox_Summ.Text = "Сума";
+            this.checkBox_Summ.UseVisualStyleBackColor = true;
+            // 
+            // checkBox_One
+            // 
+            this.checkBox_One.AutoSize = true;
+            this.checkBox_One.Location = new System.Drawing.Point(11, 29);
+            this.checkBox_One.Name = "checkBox_One";
+            this.checkBox_One.Size = new System.Drawing.Size(227, 20);
+            this.checkBox_One.TabIndex = 0;
+            this.checkBox_One.Text = "Збільшення всіх елементів на 1";
+            this.checkBox_One.UseVisualStyleBackColor = true;
             // 
             // label5
             // 
@@ -260,6 +262,16 @@
             this.label_ProcessorCount.Size = new System.Drawing.Size(52, 18);
             this.label_ProcessorCount.TabIndex = 10;
             this.label_ProcessorCount.Text = "label6";
+            // 
+            // checkBox_Sort
+            // 
+            this.checkBox_Sort.AutoSize = true;
+            this.checkBox_Sort.Location = new System.Drawing.Point(11, 130);
+            this.checkBox_Sort.Name = "checkBox_Sort";
+            this.checkBox_Sort.Size = new System.Drawing.Size(156, 20);
+            this.checkBox_Sort.TabIndex = 4;
+            this.checkBox_Sort.Text = "Сортування масиву";
+            this.checkBox_Sort.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -306,12 +318,13 @@
         private System.Windows.Forms.Button button_Start;
         private System.Windows.Forms.RichTextBox richTextBox_Result;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.CheckBox checkBox_SortArray;
+        private System.Windows.Forms.CheckBox checkBox_One;
         private System.Windows.Forms.CheckBox checkBox_Summ;
         private System.Windows.Forms.CheckBox checkBox_MinElement;
         private System.Windows.Forms.CheckBox checkBox_MaxElement;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label_ProcessorCount;
+        private System.Windows.Forms.CheckBox checkBox_Sort;
     }
 }
 
