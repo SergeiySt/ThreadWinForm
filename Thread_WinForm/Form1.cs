@@ -35,17 +35,16 @@ namespace Thread_WinForm
 
         private void button_Start_Click(object sender, EventArgs e)
         {
-
-            if (processingThread != null && processingThread.IsAlive)
-            {
-                MessageBox.Show("Обробка даних вже запущена.");
-                return;
-            }
-
             int size;
             if (!int.TryParse(textBox_A.Text, out size) || size <= 0)
             {
                 MessageBox.Show("Некоректний розмір масиву.");
+                return;
+            }
+
+            if (!checkBox_One.Checked && !checkBox_Sort.Checked && !checkBox_Summ.Checked && !checkBox_MinElement.Checked && !checkBox_MaxElement.Checked)
+            {
+                MessageBox.Show("Виберіть алгоритм.");
                 return;
             }
 
@@ -64,9 +63,11 @@ namespace Thread_WinForm
             {
                 PrintResult(data[i].ToString());
             }
-
+           
             stopwatch.Stop();
+            
             PrintResult("Час виконання: " + stopwatch.Elapsed);
+            
         }
 
         private void ProcessData()
@@ -242,14 +243,14 @@ namespace Thread_WinForm
 
         private void checkBox_TwoArray_CheckedChanged(object sender, EventArgs e)
         {
-            if(checkBox_TwoArray.Checked == true)
-            {
-                groupBox_TwoArray.Enabled = true;
-            }
-            else
-            {
-                groupBox_TwoArray.Enabled = false;
-            }
+            //if(checkBox_TwoArray.Checked == true)
+            //{
+            //    groupBox_TwoArray.Enabled = true;
+            //}
+            //else
+            //{
+            //    groupBox_TwoArray.Enabled = false;
+            //}
         }
     }
 }
